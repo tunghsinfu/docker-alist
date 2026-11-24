@@ -1,0 +1,14 @@
+services:
+  alist:
+    image: xhofe/alist:latest
+    container_name: alist
+    restart: unless-stopped
+    ports:
+      - "${ALIST_PORT:-5244}:5244"
+    volumes:
+      - ./data:/opt/alist/data
+    environment:
+      PUID: "${PUID:-0}"
+      PGID: "${PGID:-0}"
+      UMASK: "${UMASK:-022}"
+      TZ: "${TZ:-Asia/Shanghai}"
